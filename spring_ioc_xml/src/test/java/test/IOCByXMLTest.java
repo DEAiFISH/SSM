@@ -1,5 +1,6 @@
 package test;
 
+import bean.Clazz;
 import bean.Student;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -21,9 +22,24 @@ public class IOCByXMLTest {
         //获取bean
 //        Student studentOne = (Student)ioc.getBean("studentOne");
 //        Student studentOne = ioc.getBean(Student.class);
-        Student studentOne = ioc.getBean("studentOne", Student.class);
+//        Student studentOne = ioc.getBean("studentThree", Student.class);
+//        Student studentOne = ioc.getBean("studentFour", Student.class);
+//        Student studentOne = ioc.getBean("studentFive", Student.class);
+//        Student studentOne = ioc.getBean("studentSix", Student.class);
+//        Student studentOne = ioc.getBean("studentSeven", Student.class);
+        Student studentOne = ioc.getBean("studentEight", Student.class);
 
         System.out.println(studentOne);
 
+    }
+
+    @Test
+    public void Test2() {
+        ApplicationContext ioc = new ClassPathXmlApplicationContext("spring_ioc_xml.xml");
+
+//        Clazz clazz = ioc.getBean("clazzTwo", Clazz.class);
+        Clazz clazz = ioc.getBean("clazzThere", Clazz.class);
+
+        System.out.println(clazz);
     }
 }

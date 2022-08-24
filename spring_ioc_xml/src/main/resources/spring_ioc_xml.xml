@@ -1,7 +1,164 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
 
     <bean id="studentOne" class="bean.Student"></bean>
+
+
+    <!--
+                    setter注入
+        property:通过成员变量的set方法进行赋值
+        name：设置需要赋值的属性名（和set方法关）
+        value：设置属性所赋的值
+    -->
+    <bean id="studentTwo" class="bean.Student">
+        <property name="sid" value="1001"></property>
+        <property name="sname" value="张三"></property>
+        <property name="age" value="23"></property>
+        <property name="genger" value="男"></property>
+    </bean>
+
+    <!--
+                    构造器注入
+    -->
+    <bean id="studentThree" class="bean.Student">
+        <constructor-arg value="1002"/>
+        <constructor-arg value="李四"/>
+        <constructor-arg value="24"/>
+        <constructor-arg value="女"/>
+    </bean>
+
+
+    <!--
+                    引入外部bean
+        ref：引入IOC容器中的某个bean的id
+    -->
+    <bean id="studentFour" class="bean.Student">
+        <property name="sid" value="1003"/>
+        <property name="genger" value="男"/>
+        <property name="age" value="22"/>
+        <property name="sname" value="王武"/>
+        <property name="clazz" ref="clazzOne"/>
+    </bean>
+    <bean id="clazzOne" class="bean.Clazz">
+        <property name="cid" value="111"/>
+        <property name="cname" value="软件2班"/>
+    </bean>
+
+    <!--
+                    级联
+    -->
+    <bean id="studentFive" class="bean.Student">
+        <property name="sid" value="1003"/>
+        <property name="genger" value="男"/>
+        <property name="age" value="22"/>
+        <property name="sname" value="王武"/>
+        <property name="clazz" ref="clazzOne"/>
+        <!--
+            注意：级联方式，要保证提前为clazz属性赋值过着2实例化
+        -->
+        <property name="clazz.cname" value="软件1班"/>
+        <property name="clazz.cid" value="2222"/>
+    </bean>
+
+
+    <!--
+                        引入内部bean
+    -->
+    <bean id="studentSix" class="bean.Student">
+        <property name="sid" value="1003"/>
+        <property name="genger" value="男"/>
+        <property name="age" value="22"/>
+        <property name="sname" value="王武"/>
+        <property name="clazz">
+            <bean class="bean.Clazz">
+                <property name="cid" value="111"/>
+                <property name="cname" value="软件2班"/>
+            </bean>
+        </property>
+    </bean>
+
+
+    <!--
+                注入数组类型
+    -->
+    <bean id="studentSeven" class="bean.Student">
+        <property name="sid" value="1001"></property>
+        <property name="sname" value="张三"></property>
+        <property name="age" value="23"></property>
+        <property name="genger" value="男"></property>
+        <property name="hobby">
+            <array>
+                <value>抽烟</value>
+                <value>喝酒</value>
+                <value>烫头</value>
+            </array>
+        </property>
+        <!--
+                <property name="teacherMap">
+                    <map>
+                        <entry key="10086" value-ref="teacherOne"/>
+                        <entry key="1008611" value-ref="teacherTwo"/>
+                    </map>
+                </property>
+        -->
+        <property name="teacherMap" ref="teacherMap"/>
+
+    </bean>
+
+    <!--
+                    注入list集合类型
+    -->
+    <bean id="clazzTwo" class="bean.Clazz">
+        <property name="cname" value="21软件2班"/>
+        <property name="cid" value="21111"/>
+        <property name="students">
+            <list>
+                <ref bean="studentOne"/>
+                <ref bean="studentThree"/>
+                <ref bean="studentTwo"/>
+            </list>
+        </property>
+
+    </bean>
+
+    <bean id="teacherOne" class="bean.Teacher">
+        <property name="tid" value="10086"/>
+        <property name="tname" value="小张"/>
+    </bean>
+    <bean id="teacherTwo" class="bean.Teacher">
+        <property name="tid" value="1008611"/>
+        <property name="tname" value="小吴"/>
+    </bean>
+
+    <!--
+                配置一个集合类型的bean，需要导入util得约束
+                xmlns:util="http://www.springframework.org/schema/util"
+    -->
+    <util:list id="studentList">
+        <ref bean="studentOne"/>
+        <ref bean="studentTwo"/>
+        <ref bean="studentThree"/>
+    </util:list>
+
+    <bean id="clazzThere" class="bean.Clazz">
+        <property name="cname" value="21软件2班"/>
+        <property name="cid" value="21111"/>
+        <property name="students" ref="studentList"/>
+    </bean>
+
+    <util:map id="teacherMap">
+        <entry key="10086" value-ref="teacherOne"/>
+        <entry key="1008611" value-ref="teacherTwo"/>
+    </util:map>
+
+    <!--
+                    p命名空间,需要导入约束
+                    xmlns:p="http://www.springframework.org/schema/p"
+    -->
+    <bean id="studentEight" class="bean.Student"
+          p:sid="1005" p:age="24" p:genger="男"
+          p:sname="小明" p:teacherMap-ref="teacherMap"/>
 </beans>

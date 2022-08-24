@@ -9,6 +9,7 @@
         <module name="spring_helloworld" />
         <module name="MyBatis_mbg" />
         <module name="mybatisTest" />
+        <module name="spring_ioc_xml" />
       </profile>
     </annotationProcessing>
   </component>

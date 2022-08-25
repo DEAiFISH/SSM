@@ -154,11 +154,11 @@
         <entry key="1008611" value-ref="teacherTwo"/>
     </util:map>
 
-<!--
-                p命名空间,需要导入约束
-                xmlns:p="http://www.springframework.org/schema/p"
--->
+    <!--
+                    p命名空间,需要导入约束
+                    xmlns:p="http://www.springframework.org/schema/p"
+    -->
     <bean id="studentEight" class="bean.Student"
-        p:sid="1005" p:age="24" p:genger="男"
+          p:sid="1005" p:age="24" p:genger="男"
           p:sname="小明" p:teacherMap-ref="teacherMap"/>
 </beans>

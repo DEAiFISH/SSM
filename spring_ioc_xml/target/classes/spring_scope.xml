@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!--
+    scope:设置bean的作用域
+        singleton（单例）:表示获取该bean所对应的对象都是同一个对象
+        prototype（多例）:表示获取该bean所对应的对象都是不同对象
+-->
+    <bean id="student" class="bean.Student" scope="singleton">
+        <property name="sname" value="张三"/>
+        <property name="sid" value="1001"/>
+        <property name="age" value="22"/>
+    </bean>
+</beans>

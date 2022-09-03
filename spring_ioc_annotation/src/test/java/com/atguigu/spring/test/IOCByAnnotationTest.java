@@ -5,10 +5,6 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-/**
- * @author maomao
- * @create 2022-07-23 20:02
- */
 public class IOCByAnnotationTest {
 
     @Test

@@ -7,16 +7,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="spring_helloworld" />
+        <module name="spring-proxy" />
         <module name="MyBatis_mbg" />
         <module name="mybatisTest" />
+        <module name="spring-aop" />
         <module name="spring_ioc_xml" />
+        <module name="spring_ioc_annotation" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="MyBatis_mbg" target="17" />
-      <module name="mybatisTest" target="17" />
-      <module name="spring_helloworld" target="17" />
-      <module name="spring_ioc_xml" target="17" />
-    </bytecodeTargetLevel>
   </component>
 </project>

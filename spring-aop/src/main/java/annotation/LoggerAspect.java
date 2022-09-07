@@ -2,6 +2,7 @@ package annotation;
 
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
@@ -55,7 +56,7 @@ public class LoggerAspect {
 
     @After("pointCut()")
     public void afterAdviceMethod(JoinPoint joinPoint) {
-        System.out.println("\tLoggerAspect，后置通知");
+        System.out.println("\tLoggerAspect，后 置通知");
 
         //获取连接点对应方法的方法名
         Signature signature = joinPoint.getSignature();
@@ -92,5 +93,32 @@ public class LoggerAspect {
         String name = signature.getName();
 
         System.out.println("LoggerAspect，方法：" + name + ",异常：" + ex);
+    }
+
+    @Around("pointCut()")
+    public Object aroundAdviceMethod(ProceedingJoinPoint joinPoint) {
+        Object result = null;
+
+        Signature signature = joinPoint.getSignature();
+        String name = signature.getName();
+        Object[] args = joinPoint.getArgs();
+        try {
+            System.out.println("环绕通知-->前置通知");
+            System.out.println("LoggerAspect，方法：" + name + ",参数：" + Arrays.toString(args));
+            //表示目标点对象的执行
+            result = joinPoint.proceed();
+            System.out.println("环绕通知-->返回通知");
+            System.out.println("LoggerAspect，方法：" + name + ",结果：" + result);
+
+        } catch (Throwable e) {
+            System.out.println("环绕通知-->异常通知");
+            System.out.println("LoggerAspect，方法：" + name + ",异常：" + e);
+        } finally {
+            System.out.println("环绕通知-->后置通知");
+            System.out.println("LoggerAspect，方法：" + name + ",执行完毕");
+
+        }
+
+        return result;
     }
 }

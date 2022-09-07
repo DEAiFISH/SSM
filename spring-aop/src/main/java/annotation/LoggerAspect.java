@@ -32,6 +32,10 @@ import java.util.Arrays;
  * <p>
  * 4、获取连接点的信息
  * 在通知方法的参数位置，设置JoinPoint 类型的参数，就可以获取连接点所对应方法的信息
+ * <p>
+ * 5、切面优先级
+ * 可以通过@Order注解的value属性设置优先级，默认值为Integer.MAX_VALUE
+ * @Order注解的value属性值越小，优先级越高
  */
 @Component
 @Aspect//将当前组件标识为切面
@@ -96,6 +100,7 @@ public class LoggerAspect {
     }
 
     @Around("pointCut()")
+    //环绕通知的返回值一定要跟目标对象方法的通知一致
     public Object aroundAdviceMethod(ProceedingJoinPoint joinPoint) {
         Object result = null;
 

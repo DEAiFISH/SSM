@@ -9,6 +9,6 @@ public class Annotation {
     public void test1() {
         ApplicationContext ioc = new ClassPathXmlApplicationContext("aop-annotation.xml");
         Calculator calculator = ioc.getBean(Calculator.class);
-        System.out.println(calculator.add(1, 2));
+        calculator.div(1, 0);
     }
 }

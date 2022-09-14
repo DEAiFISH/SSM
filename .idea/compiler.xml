@@ -10,6 +10,7 @@
         <module name="spring-proxy" />
         <module name="MyBatis_mbg" />
         <module name="mybatisTest" />
+        <module name="spring-transaction" />
         <module name="spring-aop" />
         <module name="spring_ioc_xml" />
         <module name="spring_ioc_annotation" />

@@ -12,6 +12,7 @@
         <module name="mybatisTest" />
         <module name="spring-transaction" />
         <module name="spring-aop" />
+        <module name="spring_mvc_helloworld" />
         <module name="spring_ioc_xml" />
         <module name="spring_ioc_annotation" />
       </profile>

@@ -11,6 +11,7 @@
         <module name="MyBatis_mbg" />
         <module name="mybatisTest" />
         <module name="spring-transaction" />
+        <module name="spring_mvc_demo" />
         <module name="spring-aop" />
         <module name="spring_mvc_helloworld" />
         <module name="spring_ioc_xml" />

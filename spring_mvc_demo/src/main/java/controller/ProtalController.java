@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ProtalController {
 
     @RequestMapping("/")
-    public String protal(){
+    public String protal() {
         return "index";
     }
 }

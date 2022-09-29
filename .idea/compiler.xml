@@ -17,6 +17,7 @@
         <module name="spring_mvc_helloworld" />
         <module name="spring_ioc_xml" />
         <module name="spring_ioc_annotation" />
+        <module name="spring_mvc_rest" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="17" />

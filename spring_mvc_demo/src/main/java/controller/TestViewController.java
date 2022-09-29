@@ -7,16 +7,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class TestViewController {
 
     @RequestMapping("/test/view/thymeleaf")
-    public String testThymeleafView(){
+    public String testThymeleafView() {
         return "success";
     }
 
     @RequestMapping("/test/view/forward")
-    public String testInternalResourceView(){
+    public String testInternalResourceView() {
         return "forward:/test/model";
     }
-@RequestMapping("/test/view/redirect")
-    public String testRedirectView(){
+
+    @RequestMapping("/test/view/redirect")
+    public String testRedirectView() {
         return "redirect:/test/model";
     }
 

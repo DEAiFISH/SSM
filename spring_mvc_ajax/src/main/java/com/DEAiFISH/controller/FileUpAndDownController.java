@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.MultiValueMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -52,13 +53,13 @@ public class FileUpAndDownController {
         return "success";
     }
 
-    @RequestMapping("/test/down")
-    public ResponseEntity<byte[]> testResponseEntity(HttpSession session) throws IOException {
+    @RequestMapping("/test/down/{imgName}")
+    public ResponseEntity<byte[]> testResponseEntity(HttpSession session, @PathVariable("imgName") String imgName) throws IOException {
         //获取ServletContext对象
         ServletContext servletContext = session.getServletContext();
         //获取服务器中文件的真实路径
-        String realPath = servletContext.getRealPath("img");
-        realPath = realPath + File.separator + "1.jpg";
+        String realPath = servletContext.getRealPath("img" +  File.separator + imgName);
+//        realPath = realPath + File.separator + "1.jpg";
         //创建输入流
         InputStream is = new FileInputStream(realPath);
         //创建字节数组，is.available()获取输入流所对应文件的字节数
@@ -68,7 +69,7 @@ public class FileUpAndDownController {
         //创建HttpHeaders对象设置响应头信息
         MultiValueMap<String, String> headers = new HttpHeaders();
         //设置要下载方式以及下载文件的名字
-        headers.add("Content-Disposition", "attachment;filename=1.jpg");
+        headers.add("Content-Disposition", "attachment;filename=" + imgName);
         //设置响应状态码
         HttpStatus statusCode = HttpStatus.OK;
         //创建ResponseEntity对象

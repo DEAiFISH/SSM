@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:mvc="http://www.springframework.org/schema/mvc"
        xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <context:component-scan base-package="com.DEAiFISH"/>
+    <!--扫描控制层组件-->
+    <context:component-scan base-package="com.DEAiFISH.controller"/>
 
     <!-- Thymeleaf视图解析器 -->
     <bean id="viewResolver" class="org.thymeleaf.spring5.view.ThymeleafViewResolver">
@@ -29,17 +30,8 @@
         </property>
     </bean>
 
-    <!--
-        配置默认的servlet处理静态资源
-        当前工程的web.xml配置的前端控制器DispatcherServlet的url-pattern是/
-        tomcat的web.xml配置的DefaultServlet的url-pattern也是/
-        此时，浏览器发送的请求会优先被DispatcherServlet进行处理，但是DispatcherServlet无法处理静态资源
-        若配置了<mvc:default-servlet-handler />，此时浏览器发送的所有请求都会被DefaultServlet处理
-        若配置了<mvc:default-servlet-handler />和<mvc:annotation-driven />
-        浏览器发送的请求会先被DispatcherServlet处理，无法处理在交给DefaultServlet处理
-    -->
-
-    <mvc:default-servlet-handler/>
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    </bean>
 
     <!--开启MVC的注解驱动-->
     <mvc:annotation-driven/>

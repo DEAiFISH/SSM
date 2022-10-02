@@ -10,6 +10,7 @@
         <module name="spring_helloworld" />
         <module name="spring-proxy" />
         <module name="spring_mvc_demo" />
+        <module name="spring_listener" />
         <module name="spring_mvc_ajax" />
         <module name="spring_mvc_helloworld" />
         <module name="spring_mvc_annotation" />
@@ -17,6 +18,7 @@
         <module name="MyBatis_mbg" />
         <module name="mybatisTest" />
         <module name="spring-transaction" />
+        <module name="integrate_SSM" />
         <module name="spring-aop" />
         <module name="spring_ioc_xml" />
         <module name="spring_ioc_annotation" />

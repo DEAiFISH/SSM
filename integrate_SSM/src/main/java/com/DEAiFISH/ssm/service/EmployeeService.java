@@ -9,4 +9,10 @@ public interface EmployeeService {
     List<Employee> getAllEmployee();
 
     PageInfo<Employee> getEmployeePage(Integer num);
+
+    Employee getEmployeeById(Integer id);
+
+    void updateEmployee(Employee employee);
+
+    void deleteEmployeeById(Integer id);
 }

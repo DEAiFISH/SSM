@@ -1,9 +1,7 @@
 package com.DEAiFISH.ssm.mapper;
 
 import com.DEAiFISH.ssm.pojo.Employee;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -22,4 +20,14 @@ public interface EmployeeMapper {
     List<Employee> getAllEmployee();
 
 
+    @Select("select * from tb_emp where emp_id = #{id}")
+    @ResultMap("EmpResult")
+    Employee getEmployeeById(@Param("id") Integer id);
+
+    @Update("update tb_emp set emp_name = #{name},age = #{age},gender = #{gender},email = #{email} " +
+            "where emp_id = #{id}")
+    void updateEmployee(Employee employee);
+
+    @Delete("delete from tb_emp where emp_id = #{id}")
+    void deleteEmployeeById(@Param("id") Integer id);
 }

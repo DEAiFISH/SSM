@@ -18,7 +18,7 @@ import java.util.List;
  * 查询指定员工的信息 --> /employee/{id} --> GET
  * 跳转到添加页面 --> /to/add --> GET
  * 新增员工 --> /employee --> POST
- * 跳转到修改页面 --> /employee --> PUT
+ * 修改员工页面 --> /employee --> PUT
  * 删除员工信息 --> /employee/{id} --> DELETE
  */
 
@@ -28,7 +28,51 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
-    @RequestMapping(value = "/employee/page/{num}",method = RequestMethod.GET)
+    /**
+     * 通过id删除员工
+     * @param id
+     * @param pageNum
+     * @return
+     */
+    @RequestMapping(value = "/employee/{pageNum}/{id}",method = RequestMethod.DELETE)
+    public String deleteEmployeeById(@PathVariable("id") Integer id,@PathVariable("pageNum") Integer pageNum){
+        employeeService.deleteEmployeeById(id);
+        return "redirect:/employee/page/" + pageNum;
+    }
+
+    /**
+     * 修改员工信息
+     * @param employee
+     * @return
+     */
+    @RequestMapping(value = "/employee",method = RequestMethod.PUT)
+    public String updateEmployee(Employee employee){
+        employeeService.updateEmployee(employee);
+        return "redirect:/employee/page/1";
+    }
+
+
+
+    /**
+     * 根据id查询指定员工并跳转到修改页面
+     * @param id
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/employee/{id}", method = RequestMethod.GET)
+    public String getEmployeeById(@PathVariable("id") Integer id, Model model) {
+        Employee employee = employeeService.getEmployeeById(id);
+        model.addAttribute("employee", employee);
+        return "employee_update";
+    }
+
+    /**
+     * 分页查询所有员工
+     * @param num
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/employee/page/{num}", method = RequestMethod.GET)
     public String getEmployeePage(@PathVariable("num") Integer num, Model model) {
         //获取员工分页信息
         PageInfo<Employee> page = employeeService.getEmployeePage(num);
@@ -38,6 +82,11 @@ public class EmployeeController {
         return "employee_list";
     }
 
+    /**
+     * 查询所有员工
+     * @param model
+     * @return
+     */
     @RequestMapping(value = "/employee", method = RequestMethod.GET)
     public String getAllEmployee(Model model) {
 

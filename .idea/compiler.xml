@@ -10,6 +10,7 @@
         <module name="spring_helloworld" />
         <module name="spring-proxy" />
         <module name="spring_mvc_demo" />
+        <module name="SSM_login" />
         <module name="spring_listener" />
         <module name="spring_mvc_ajax" />
         <module name="spring_mvc_helloworld" />

@@ -3,6 +3,8 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/MyBatis_mbg/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/MyBatis_mbg/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/SSM_login/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/SSM_login/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/integrate_SSM/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/integrate_SSM/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/integrate_SSM/src/main/webapp/static/css/index_like.css" charset="GB18030" />

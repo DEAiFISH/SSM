@@ -15,7 +15,7 @@ public class UserServiceimpl implements UserService {
 
 
     @Override
-    public void userLoginUp(User user) {
-        userMapper.userLoginUp(user);
+    public User userLoginUp(User user) {
+        return userMapper.userLoginUp(user);
     }
 }

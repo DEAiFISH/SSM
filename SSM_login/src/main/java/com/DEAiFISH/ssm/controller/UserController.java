@@ -22,12 +22,11 @@ public class UserController {
     @RequestMapping(value = "/login",method = RequestMethod.GET)
     public String userLogin(HttpServletRequest request){
         String userName = request.getParameter("username");
-        String userPassWord = request.getParameter("passWord");
+        String userPassWord = request.getParameter("password");
         User user = new User(userName,userPassWord);
+//        System.out.println(user);
 
-        System.out.println(user);
-
-        userService.userLoginUp(user);
+        System.out.println(userService.userLoginUp(user));
 
         return "success";
 

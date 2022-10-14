@@ -25,6 +25,8 @@
         <module name="spring_ioc_annotation" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="17" />
+    <bytecodeTargetLevel target="17">
+      <module name="HongxiuWebDemo" target="17" />
+    </bytecodeTargetLevel>
   </component>
 </project>

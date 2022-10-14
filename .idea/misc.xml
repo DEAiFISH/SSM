@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/HongxiuWebDemo" />
     <file type="web" url="file://$PROJECT_DIR$/integrate_SSM" />
     <file type="web" url="file://$PROJECT_DIR$/spring_listener" />
     <file type="web" url="file://$PROJECT_DIR$/spring_mvc_ajax" />
@@ -10,6 +11,9 @@
     <file type="web" url="file://$PROJECT_DIR$/spring_mvc_helloworld" />
     <file type="web" url="file://$PROJECT_DIR$/spring_mvc_rest" />
     <file type="web" url="file://$PROJECT_DIR$/SSM_login" />
+  </component>
+  <component name="JavadocGenerationManager">
+    <option name="OUTPUT_DIRECTORY" value="$USER_HOME$/Desktop/JavaDoc" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
